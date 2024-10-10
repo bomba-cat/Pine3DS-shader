@@ -23,7 +23,8 @@
 .constf const1(0.000015, 0.000015, 0.000015, 0.000015)
 .constf const2(0.000000, 0.000000, 0.000000, 0.000000)
 .constf const3(0.000000, 0.000000, 0.250000, 0.022346)
-.constf const4(55.000000, 55.000000, 55.000000, 1.000000)
+.constf const4(55.000000, 55.000000, 55.000000, 1.000000) ;Select Color
+.constf const5(1.000000, 1.000000, 1.000000, 1.000000) ;for DPH
 
 ; normalizedepth
 .proc normalizedepth
@@ -48,6 +49,7 @@
     ; Doesnt work yet, pushing before next PC Crash lmao
     mov r4.rgb, WORLDVIEWPROJ.rgb
     mul r3, const4.rgb, r4.rgb
-    mov outColor, r3
+    DPH r5, r3, const5
+    mov outColor, r5
     end
 .end
