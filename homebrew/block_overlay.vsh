@@ -2,6 +2,7 @@
 ; block_overlay.shbin
 
 ; Handcoded by ENDERMANYK
+; Edited by bomba-cat
 
 ; Uniforms
 .fvec WORLDVIEWPROJ[4]
@@ -22,6 +23,7 @@
 .constf const1(0.000015, 0.000015, 0.000015, 0.000015)
 .constf const2(0.000000, 0.000000, 0.000000, 0.000000)
 .constf const3(0.000000, 0.000000, 0.250000, 0.022346)
+.constf const4(55.000000, 55.000000, 55.000000, 1.000000)
 
 ; normalizedepth
 .proc normalizedepth
@@ -42,6 +44,10 @@
     slt r1, r0, const2
     add r2, r0, r1
     mov outCoord0, r2
-    mov outColor, CURRENT_COLOR
+
+    ; Doesnt work yet, pushing before next PC Crash lmao
+    mov r4.rgb, WORLDVIEWPROJ.rgb
+    mul r3, const4.rgb, r4.rgb
+    mov outColor, r3
     end
 .end

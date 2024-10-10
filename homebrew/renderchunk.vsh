@@ -2,6 +2,7 @@
 ; renderchunk.shbin
 
 ; Handcoded by ENDERMANYK
+; Edited by bomba-cat
 
 ; Uniforms
 .fvec WORLDVIEWPROJ[4], WORLDVIEW[4], PROJ[4]  ;uniform MAT4 WORLDVIEWPROJ, uniform MAT4 WORLDVIEW, uniform MAT4 PROJ
@@ -36,6 +37,7 @@
 .constf const2(0.00001525, 0.00001525, 0.00001525, 0.00001525)
 .constf const3(0.000000, 0.000000, 0.000000, 0.000000)
 .constf const4(0.000000, 1.000000, 0.025000, 0.022346)
+.constf const5(0.600000, 0.600000, 0.600000, 1.000000) ;Grayscale Textures
 
 ; normalizedepth
 .proc normalizedepth
@@ -56,13 +58,20 @@
     dp4 r2.y, WORLDVIEW[1], r1
     dp4 r2.z, WORLDVIEW[2], r1
     dp4 r2.w, WORLDVIEW[3], r1
+    
     dp4 r0.x, PROJ[0], r2                                      ;pos = PROJ * pos
     dp4 r0.y, PROJ[1], r2
     dp4 r0.z, PROJ[2], r2
     dp4 r0.w, PROJ[3], r2
     mov r0.xyz, r0.yxzz
+    
     mul outPos, const0, r0                                     ;gl_Position = pos
-    mul outColor, const1, aColor                               ;color = COLOR
+    
+    ;mov r4.rgba, aColor.rgba
+    ;dp4 r5, const5, r4
+    ;mul outColor, const1, r5                                   ;color = COLOR
+    mul outColor, const1, aColor
+
     mul r0, const2, aTexCoord
     slti r1, r0, const3
     add r2, r0, r1
