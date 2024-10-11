@@ -25,6 +25,7 @@
 .constf const1(0.003922, 0.003922, 0.003922, 0.003922)
 .constf const2(0.000015, 0.000015, 0.000015, 0.000015)
 .constf const3(0.000000, 0.000000, 0.000000, 0.000000)
+.constf const4(1.000000, 1.000000, 1.000000, 1.000000) ;Pink
 
 ; main
 .proc main
@@ -34,6 +35,11 @@
     dp4 r0.w, WORLDVIEWPROJ[3], aPosition
     mov r0.xyz, r0.yxz
     mul outPos, const0, r0
+    
+    ;mov r4, aColor
+    ;mul r3, const4, r4
+    ;mul r5, const1, r3
+    
     mul r5, const1, aColor
     mul r6, DARKEN, r5
     mov r6.w, const0.w

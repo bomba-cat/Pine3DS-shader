@@ -19,7 +19,7 @@
 .constf const0(1.000000, -1.000000, 1.000000, 1.000000)
 .constf const1(0.003922, 0.003922, 0.003922, 0.003922)
 .constf const2(0.000000, 0.000000, 0.250000, 0.022346)
-.constf const3(0.600000, 0.600000, 0.600000, 1.000000)
+.constf color(1.000000, 255.000000, 1.000000, 1.000000) ;Background Color and loading bar Color
 
 ; normalizedepth
 .proc normalizedepth
@@ -37,8 +37,8 @@
     mov r0.xyz, r0.yxz
     mul outPos, const0, r0
 
-    mov r1.rgba, aColor.rgba
-    dp4 r2, const3, r1
-    mul outColor, const1, r2
+    mov r1.rgba, color.rgba
+		mul r2, r1, aColor
+		mul outColor, const1, r2
     end
 .end
