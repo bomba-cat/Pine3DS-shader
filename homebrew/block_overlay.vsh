@@ -23,7 +23,7 @@
 .constf const1(0.000015, 0.000015, 0.000015, 0.000015)
 .constf const2(0.000000, 0.000000, 0.000000, 0.000000)
 .constf const3(0.000000, 0.000000, 0.250000, 0.022346)
-.constf outLineColor(1.000000, 255.000000, 1.000000, 1.000000)
+.constf outLineColor(0.000000, 255.000000, 0.000000, 1.000000)
 
 ; normalizedepth
 .proc normalizedepth
